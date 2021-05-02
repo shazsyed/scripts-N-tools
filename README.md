@@ -1,3 +1,3 @@
 ### Tools and scripts
 
-> burpparam.py - extracts all parameters from burp exported XML file (supports JSON,URL and FORMS parameters)
+> burpparam.py - Extracts all parameters from burp exported XML file (supports JSON, PATH and FORMS parameters)
