@@ -31,7 +31,7 @@ def parseXML(XMLpath):
            contentType = headers['Content-Type']
 
            if "application/json" in contentType:
-               allParameters.extend(getJsonParameters(body, path))
+               allParameters.extend(getJsonParameters(body))
            elif "application/x-www-form-urlencoded" in contentType:
                allParameters.extend(getFormParameters(body))
         except Exception as e:
@@ -50,7 +50,7 @@ def getPathParameters(path):
     parameters = re.findall(pattern, path)
     return parameters
 
-def getJsonParameters(body, path):
+def getJsonParameters(body):
     pattern = r"[{,]\"(\w*?)\":"
     parameters = re.findall(pattern, body)
     return parameters
